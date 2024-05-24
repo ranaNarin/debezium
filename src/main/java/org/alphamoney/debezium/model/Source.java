@@ -1,2 +1,51 @@
-package org.alphamoney.debezium.model;public class Source {
+package org.alphamoney.debezium.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Source {
+
+    @JsonProperty("version")
+    private String version;
+
+    @JsonProperty("connector")
+    private String connector;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("ts_ms")
+    private String ts_ms;
+
+    @JsonProperty("snapshot")
+    private String snapshot;
+
+    @JsonProperty("db")
+    private String db;
+
+    @JsonProperty("schema")
+    private String schema;
+
+    @JsonProperty("table")
+    private String table;
+
+    @JsonProperty("txId")
+    private String txId;
+
+    @JsonProperty("lsn")
+    private String lsn;
+
+    @JsonProperty("xmin")
+    private String xmin;
+
+
+
+
 }
