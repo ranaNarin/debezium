@@ -37,21 +37,16 @@ services:
       - kafka
 
   db:
-    image: debezium/example-postgres
+    image: mysql:8.0
     platform: linux/amd64
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: dgn
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dgn
     ports:
-      - 5555:5432
+      - 3307:3306
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    command:
-      - "postgres"
-      - "-c"
-      - "wal_level=logical"
 
   debezium:
     image: debezium/connect
@@ -68,4 +63,3 @@ services:
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
       - STATUS_STORAGE_TOPIC=my_connect_statuses
-

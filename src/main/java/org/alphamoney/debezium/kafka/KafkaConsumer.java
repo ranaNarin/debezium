@@ -12,7 +12,7 @@ public class KafkaConsumer {
     Logger logger= LoggerFactory.getLogger(KafkaConsumer.class);
 
     @KafkaListener(
-            topics = "product.public.product",
+            topics = "product.dgn.product",
             groupId = "product-group"
     )
     public void debeziumListener(ProductMessageCDC productMessageCDC){
