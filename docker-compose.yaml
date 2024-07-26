@@ -36,24 +36,23 @@ services:
     depends_on:
       - kafka
 
-  db:
-    image: mysql:8.0
-    platform: linux/amd64
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: dgn
-    ports:
-      - 3307:3306
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+#  db:
+#    image: mysql:8.0
+#    platform: linux/amd64
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: dgn
+#    ports:
+#      - 3307:3306
+#    extra_hosts:
+#      - "host.docker.internal:host-gateway"
 
   debezium:
     image: debezium/connect
     platform: linux/amd64
     container_name: debezium
     links:
-      - db
       - kafka
     ports:
       - '8083:8083'
